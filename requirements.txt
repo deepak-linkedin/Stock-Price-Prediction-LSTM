@@ -4,4 +4,4 @@ numpy
 matplotlib
 scikit-learn
 yfinance
-streamlit
+streamlit==1.32.0
