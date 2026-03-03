@@ -10,25 +10,21 @@ st.title("📈 Stock Price Prediction App")
 
 st.info("For Indian stocks use .NS (Example: RELIANCE.NS)")
 
-# Popular stocks dropdown
-popular_stocks = {
-    "Apple (AAPL)": "AAPL",
-    "Tesla (TSLA)": "TSLA",
-    "Microsoft (MSFT)": "MSFT",
-    "Google (GOOGL)": "GOOGL",
-    "Amazon (AMZN)": "AMZN"
-}
+# Popular stocks list
+stock_options = ["AAPL", "GOOGL", "TSLA", "MSFT", "AMZN", "Other"]
 
-selected_stock = st.selectbox("Select Popular Stock", list(popular_stocks.keys()))
+selected_stock = st.selectbox("Select Stock", stock_options)
 
-# Custom input
-custom_stock = st.text_input("Or Enter Custom Stock Symbol (Example: RELIANCE.NS)")
-
-# Decide final stock symbol
-if custom_stock:
-    stock_symbol = custom_stock.upper()
+# If user selects "Other", show custom input
+if selected_stock == "Other":
+    custom_stock = st.text_input("Enter Stock Symbol (e.g., NFLX, META)")
+    if custom_stock:
+        stock_symbol = custom_stock.upper()
+    else:
+        st.warning("Please enter a stock symbol.")
+        st.stop()
 else:
-    stock_symbol = popular_stocks[selected_stock]
+    stock_symbol = selected_stock
 
 if st.button("Predict"):
     model = load_model("lstm_model.h5") # load model
@@ -58,5 +54,3 @@ if st.button("Predict"):
         plt.xlabel("Date")
         plt.ylabel("Price")
         st.pyplot(plt)    
-        
-    
