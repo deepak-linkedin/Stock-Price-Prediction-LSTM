@@ -35,17 +35,16 @@ The model uses the past 60 days of closing prices to predict the next day's clos
 
 ## 📂 Project Structure
 
-Stock-Price-Prediction/
+```
+Stock-Price-Prediction-LSTM/
 │
+├── app.py
 ├── lstm_model.h5
 ├── stock_prediction.ipynb
-├── app.py
 ├── requirements.txt
 ├── README.md
 └── app_screenshot.png
-
-
-
+```
 ---
 
 ## 🛠 Installation
